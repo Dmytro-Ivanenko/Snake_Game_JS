@@ -10,7 +10,7 @@ export default class Snake {
 		this.dy = 0;
 		this.tails = [];
 		this.maxTails = 3;
-		// debugger;
+
 		this.control();
 	}
 
@@ -55,7 +55,16 @@ export default class Snake {
 
 	draw(context) {
 		this.tails.forEach((el, index) => {
-			index = 0 ? (context.fillStyle = "#FA0556") : (context.fillStyle = "#A00034");
+			// index == 0 ? (context.fillStyle = "orange") : (context.fillStyle = this.randColor());
+
+			if (index === 0) {
+				context.fillStyle = "orange";
+			} else if (index % 2 === 0) {
+				context.fillStyle = "grey";
+			} else {
+				context.fillStyle = "black";
+			}
+
 			context.fillRect(el.x, el.y, this.config.sizeCell, this.config.sizeCell);
 		});
 	}

@@ -12,6 +12,7 @@ class Game {
 		this.berry = new Berry(this.canvas);
 		this.score = new Score(".game-score .score-count", 0);
 		// debugger;
+
 		new GameLoop(this.update.bind(this), this.draw.bind(this));
 	}
 
@@ -21,7 +22,7 @@ class Game {
 
 	draw() {
 		this.canvas.context.clearRect(0, 0, this.canvas.element.width, this.canvas.element.height);
-
+		debugger;
 		this.snake.draw(this.canvas.context);
 		this.berry.draw(this.canvas.context);
 	}

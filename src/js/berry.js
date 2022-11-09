@@ -15,7 +15,7 @@ export default class Berry {
 
 	draw(context) {
 		context.beginPath();
-		context.fillStyle = "#A00034";
+		context.fillStyle = this.randColor();
 		context.arc(
 			this.x + this.config.sizeCell / 2,
 			this.y + this.config.sizeCell / 2,
@@ -29,5 +29,15 @@ export default class Berry {
 	randomPosition() {
 		this.x = getRandomInt(0, this.canvas.element.width / this.config.sizeCell) * this.config.sizeCell;
 		this.y = getRandomInt(0, this.canvas.element.height / this.config.sizeCell) * this.config.sizeCell;
+	}
+
+	randColor() {
+		return (
+			"#" +
+			Math.floor(Math.random() * 16777215)
+				.toString(16)
+				.padStart(6, "0")
+				.toUpperCase()
+		);
 	}
 }
