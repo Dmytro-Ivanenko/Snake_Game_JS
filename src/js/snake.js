@@ -11,6 +11,7 @@ export default class Snake {
 		this.tails = [];
 		this.maxTails = 3;
 
+		this.reverseKey = "";
 		this.control();
 	}
 
@@ -75,28 +76,27 @@ export default class Snake {
 		this.dy = 0;
 		this.tails = [];
 		this.maxTails = 3;
+		this.reverseKey = "";
 	}
 
 	control() {
-		let reverseKey = "";
-
 		document.addEventListener("keydown", e => {
-			if (e.code == "KeyW" && reverseKey !== "KeyS") {
+			if (e.code == "KeyW" && this.reverseKey !== "KeyS") {
 				this.dy = -this.config.sizeCell;
 				this.dx = 0;
-				reverseKey = "KeyW";
-			} else if (e.code == "KeyA" && reverseKey !== "KeyD") {
+				this.reverseKey = "KeyW";
+			} else if (e.code == "KeyA" && this.reverseKey !== "KeyD") {
 				this.dx = -this.config.sizeCell;
 				this.dy = 0;
-				reverseKey = "KeyA";
-			} else if (e.code == "KeyS" && reverseKey !== "KeyW") {
+				this.reverseKey = "KeyA";
+			} else if (e.code == "KeyS" && this.reverseKey !== "KeyW") {
 				this.dy = this.config.sizeCell;
 				this.dx = 0;
-				reverseKey = "KeyS";
-			} else if (e.code == "KeyD" && reverseKey !== "KeyA") {
+				this.reverseKey = "KeyS";
+			} else if (e.code == "KeyD" && this.reverseKey !== "KeyA") {
 				this.dx = this.config.sizeCell;
 				this.dy = 0;
-				reverseKey = "KeyD";
+				this.reverseKey = "KeyD";
 			}
 		});
 	}
